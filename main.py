@@ -34,7 +34,7 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 if uploaded_file is not None:
     
     # Just for checks: 
-    st.write(type(uploaded_file)
+    st.write(type(uploaded_file))
              
     # Crop the uploaded image on the page
     st.write('#### Please select the part of the sky')
@@ -77,7 +77,7 @@ if uploaded_file is not None:
 if uploaded_file_2 is not None:
     
     # Just for checks: 
-    st.write(type(uploaded_file_2)
+    st.write(type(uploaded_file_2))
              
     # Crop the uploaded image on the page
     st.write('#### Please select the part of the sky')
