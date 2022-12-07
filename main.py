@@ -89,14 +89,6 @@ if uploaded_file_2 is not None:
     st.image(cropped_img)
     cropped_img = cropped_img.convert(mode = "RGB")
 
-    # Add one pixel if shape is not 200
-    if cropped_img.size[0] != 224:
-        na = np.array(cropped_img)
-        x = na[0,:]
-        y = np.expand_dims(na[:,0], axis=1)
-        new_img = np.append(na, y, axis=1)
-        cropped_img = Image.fromarray(new_img)
-
     # Convert cropped image to bytes
     cropped_img_bytes = cropped_img.tobytes()
 
