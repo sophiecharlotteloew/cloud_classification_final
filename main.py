@@ -72,8 +72,10 @@ if uploaded_file is not None:
 
 if uploaded_file_2 is not None:
     
+    img_2 = st_cropper(uploaded_file_2, realtime_update=True, box_color="blue", aspect_ratio=(1, 1))
+    
     # To read image file buffer as a PIL Image:
-    img_2 = Image.open(uploaded_file_2)
+    # img_2 = Image.open(uploaded_file_2)
     
     # Reshape the file
     newsize = (224, 224)
