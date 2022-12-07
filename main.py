@@ -93,7 +93,6 @@ if uploaded_file_2 is not None:
     # Reshape the file
     newsize = (224, 224)
     img_2 = cropped_img.resize(newsize)
-    st.image(img_2)
     img_2 = img_2.convert(mode = "RGB")
 
     # Convert cropped image to bytes
