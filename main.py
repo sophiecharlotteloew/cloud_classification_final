@@ -91,11 +91,18 @@ if uploaded_file_2 is not None:
     # cropped_img_bytes = cropped_img.tobytes()
     
     # Displaying and processing photo directly taken in app
-    # To read image file buffer as bytes:
-    uploaded_file_2 = uploaded_file_2.getvalue()
-    st.image(uploaded_file_2)
-    st.write(type(uploaded_file_2))
-             
+    
+    # To read image file buffer as a PIL Image:
+    img_2 = Image.open(uploaded_file_2)
+    st.write(type(img_2)) 
+    
+    newsize = (224, 224)
+    img_2 = img_2.resize(newsize)
+    st.image(img_2)
+    img_2 = img_2.convert(mode = "RGB")
+
+    # Convert cropped image to bytes
+    uploaded_file_2 = img_2.tobytes() 
 
     if st.button('Analyze the weather'):
         # Progress bar
