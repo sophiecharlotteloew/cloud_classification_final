@@ -73,7 +73,7 @@ if uploaded_file is not None:
             my_bar.progress((i+1)*10)
             time.sleep(1)
             
-        st.write('Analysis of weather performed ! ⛅')    
+        st.info('Analysis of weather performed!', icon="⛅")
         st.write(f'### {res}')
 
 if uploaded_file_2 is not None:
