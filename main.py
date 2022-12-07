@@ -94,7 +94,9 @@ if uploaded_file_2 is not None:
     # To read image file buffer as bytes:
     uploaded_file_2 = uploaded_file_2.getvalue()
     st.image(uploaded_file_2)
-
+    st.write(type(uploaded_file_2)
+    st.write(uploaded_file_2.shape)
+             
 
     if st.button('Analyze the weather'):
         # Progress bar
