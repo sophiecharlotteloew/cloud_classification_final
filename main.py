@@ -87,7 +87,7 @@ if uploaded_file_2 is not None:
         st.write("Double click to save crop")
 
     # Get a cropped image from the frontend
-    cropped_img_2 = st_cropper(img, realtime_update=realtime_update, box_color="blue",
+    cropped_img_2 = st_cropper(img, realtime_update=realtime_update_2, box_color="blue",
                                 aspect_ratio=(1, 1))
 
     st.write(cropped_img_2.size)
