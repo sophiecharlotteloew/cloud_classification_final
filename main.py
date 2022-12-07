@@ -32,9 +32,6 @@ st.write("### Let's analyze the Sky!")
 st.set_option('deprecation.showfileUploaderEncoding', False)
 
 if uploaded_file is not None:
-    
-    # Just for checks: 
-    st.write(type(uploaded_file))
              
     # Crop the uploaded image on the page
     st.write('#### Please select the part of the sky')
@@ -76,44 +73,38 @@ if uploaded_file is not None:
 
 if uploaded_file_2 is not None:
     
-    # Just for checks: 
-    st.write(type(uploaded_file_2))
-             
     # Crop the uploaded image on the page
     st.write('#### Please select the part of the sky')
-    realtime_update_2 = st.checkbox(label="Update in Real Time", value=True)
+    realtime_update = st.checkbox(label="Update in Real Time", value=True)
     img = Image.open(uploaded_file_2)
-    if not realtime_update_2:
+    if not realtime_update:
         st.write("Double click to save crop")
-
     # Get a cropped image from the frontend
-    cropped_img_2 = st_cropper(img, realtime_update=realtime_update_2, box_color="blue",
+    cropped_img = st_cropper(img, realtime_update=realtime_update, box_color="blue",
                                 aspect_ratio=(1, 1))
-
-    st.write(cropped_img_2.size)
 
     # Manipulate cropped image at will
     st.write("Preview")
-    _ = cropped_img_2.thumbnail((224,224))
-    st.image(cropped_img_2)
-    cropped_img_2 = cropped_img_2.convert(mode = "RGB")
+    _ = cropped_img.thumbnail((224,224))
+    st.image(cropped_img)
+    cropped_img = cropped_img.convert(mode = "RGB")
 
     # Add one pixel if shape is not 200
-    if cropped_img_2.size[0] != 224:
-        na = np.array(cropped_img_2)
+    if cropped_img.size[0] != 224:
+        na = np.array(cropped_img)
         x = na[0,:]
         y = np.expand_dims(na[:,0], axis=1)
         new_img = np.append(na, y, axis=1)
-        cropped_img_2 = Image.fromarray(new_img)
+        cropped_img = Image.fromarray(new_img)
 
     # Convert cropped image to bytes
-    cropped_img_bytes = cropped_img_2.tobytes()
+    cropped_img_bytes = cropped_img.tobytes()
 
     if st.button('Analyze the weather'):
         # Progress bar
         st.spinner("Sending the image to the API ...")
         # Sending to API for prediction
-        res = requests.post(url + "/predict", files={'bytes': cropped_img_bytes})
+        res = requests.post(url, files={'bytes': cropped_img_bytes})
         res = res.content
         res = res.decode("utf-8")
 
