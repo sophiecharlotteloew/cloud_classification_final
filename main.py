@@ -73,29 +73,34 @@ if uploaded_file is not None:
 if uploaded_file_2 is not None:
     
     # Crop the uploaded image on the page
-    st.write('#### Please select the part of the sky')
-    realtime_update = st.checkbox(label="Update in Real Time", value=True)
-    img = Image.open(uploaded_file_2)
-    if not realtime_update:
-        st.write("Double click to save crop")
+    #st.write('#### Please select the part of the sky')
+    #realtime_update = st.checkbox(label="Update in Real Time", value=True)
+    #img = Image.open(uploaded_file_2)
+    #if not realtime_update:
+    #    st.write("Double click to save crop")
     # Get a cropped image from the frontend
-    cropped_img = st_cropper(img, realtime_update=realtime_update, box_color="blue",
-                                aspect_ratio=(1, 1))
+    #cropped_img = st_cropper(img, realtime_update=realtime_update, box_color="blue", aspect_ratio=(1, 1))
 
     # Manipulate cropped image at will
-    st.write("Preview")
-    _ = cropped_img.thumbnail((224,224))
-    st.image(cropped_img)
-    cropped_img = cropped_img.convert(mode = "RGB")
+    #st.write("Preview")
+    #_ = cropped_img.thumbnail((224,224))
+    #st.image(cropped_img)
+    #cropped_img = cropped_img.convert(mode = "RGB")
 
     # Convert cropped image to bytes
-    cropped_img_bytes = cropped_img.tobytes()
+    # cropped_img_bytes = cropped_img.tobytes()
+    
+    # Displaying and processing photo directly taken in app
+    # To read image file buffer as bytes:
+    uploaded_file_2 = uploaded_file_2.getvalue()
+    st.image(uploaded_file_2)
+
 
     if st.button('Analyze the weather'):
         # Progress bar
         st.spinner("Sending the image to the API ...")
         # Sending to API for prediction
-        res = requests.post(url, files={'bytes': cropped_img_bytes})
+        res = requests.post(url, files={'bytes': uploaded_file_2})
         res = res.content
         res = res.decode("utf-8")
 
