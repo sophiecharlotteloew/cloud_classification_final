@@ -70,7 +70,7 @@ if uploaded_file is not None:
 
         my_bar = st.progress(0)
         for percent_complete in range(10):
-            time.sleep(0.1)
+            time.sleep(1)
             my_bar.progress(percent_complete + 1)
             
         st.write('Analysis of weather performed ! ⛅')    
