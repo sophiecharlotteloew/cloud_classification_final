@@ -32,6 +32,10 @@ st.write("### Let's analyze the Sky!")
 st.set_option('deprecation.showfileUploaderEncoding', False)
 
 if uploaded_file is not None:
+    
+    # Just for checks: 
+    st.write(type(uploaded_file)
+             
     # Crop the uploaded image on the page
     st.write('#### Please select the part of the sky')
     realtime_update = st.checkbox(label="Update in Real Time", value=True)
@@ -71,11 +75,15 @@ if uploaded_file is not None:
         st.write(f'### {res}')
 
 if uploaded_file_2 is not None:
+    
+    # Just for checks: 
+    st.write(type(uploaded_file_2)
+             
     # Crop the uploaded image on the page
     st.write('#### Please select the part of the sky')
-    realtime_update = st.checkbox(label="Update in Real Time", value=True)
+    realtime_update_2 = st.checkbox(label="Update in Real Time", value=True)
     img = Image.open(uploaded_file_2)
-    if not realtime_update:
+    if not realtime_update_2:
         st.write("Double click to save crop")
 
     # Get a cropped image from the frontend
