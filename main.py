@@ -68,14 +68,13 @@ if uploaded_file is not None:
         res = res.content
         res = res.decode("utf-8")
 
-        st.write('Analysis of weather performed ! ⛅')
-
         my_bar = st.progress(0)
         for percent_complete in range(10):
             time.sleep(0.1)
             my_bar.progress(percent_complete + 1)
             
-            st.write(f'### {res}')
+        st.write('Analysis of weather performed ! ⛅')    
+        st.write(f'### {res}')
 
 if uploaded_file_2 is not None:
     
