@@ -72,14 +72,27 @@ if uploaded_file is not None:
 
 if uploaded_file_2 is not None:
     
-    img_2 = st_cropper(uploaded_file_2, realtime_update=True, box_color="blue", aspect_ratio=(1, 1))
-    
     # To read image file buffer as a PIL Image:
     # img_2 = Image.open(uploaded_file_2)
     
+    # Crop the uploaded image on the page
+    st.write('#### Please select the part of the sky')
+    realtime_update = st.checkbox(label="Update in Real Time", value=True)
+    img = Image.open(uploaded_file_2)
+    if not realtime_update:
+        st.write("Double click to save crop")
+    # Get a cropped image from the frontend
+    cropped_img = st_cropper(img, realtime_update=realtime_update, box_color="blue", aspect_ratio=(1, 1))
+    
+    # Manipulate cropped image at will
+    st.write("Preview")
+    _ = cropped_img.thumbnail((224,224))
+    st.image(cropped_img)
+    cropped_img = cropped_img.convert(mode = "RGB")
+    
     # Reshape the file
     newsize = (224, 224)
-    img_2 = img_2.resize(newsize)
+    img_2 = cropped_img.resize(newsize)
     st.image(img_2)
     img_2 = img_2.convert(mode = "RGB")
 
