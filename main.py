@@ -6,6 +6,7 @@ import requests
 import io
 from streamlit_cropper import st_cropper
 import numpy as np
+import time
 
 url = "https://clouds-ivl76q6s4a-ew.a.run.app/predict"
 
@@ -68,7 +69,13 @@ if uploaded_file is not None:
         res = res.decode("utf-8")
 
         st.write('Analysis of weather performed ! ⛅')
-        st.write(f'### {res}')
+
+        my_bar = st.progress(0)
+        for percent_complete in range(10):
+            time.sleep(0.1)
+            my_bar.progress(percent_complete + 1)
+            
+            st.write(f'### {res}')
 
 if uploaded_file_2 is not None:
     
