@@ -73,8 +73,8 @@ if uploaded_file is not None:
             res = res.decode("utf-8")
 
             my_bar = st.progress(0)
-            for i in range(10):
-                my_bar.progress((i+1)*10)
+            for i in range(5):
+                my_bar.progress((i+1)*20)
                 time.sleep(1)
         
             st.write('Analysis performed!')
