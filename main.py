@@ -35,13 +35,25 @@ if uploaded_file is not None:
              
     # Crop the uploaded image on the page
     st.write('#### Please select the part of the sky')
-    # realtime_update = st.checkbox(label="Update in Real Time", value=True)
+    realtime_update = st.checkbox(label="Update in Real Time", value=True)
     img = Image.open(uploaded_file)
     if not realtime_update:
         st.write("Double click to save crop")
     # Get a cropped image from the frontend
-    cropped_img = st_cropper(img, realtime_update=True, box_color="blue",
-                                aspect_ratio=(1, 1))
+    cropped_img = st_cropper(img, realtime_update=realtime_update, box_color="blue", aspect_ratio=(1, 1))
+    
+    # Switching to 2 columns: 
+    
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.header("A cat")
+        st.image("https://static.streamlit.io/examples/cat.jpg")
+
+    with col2:
+        st.header("A dog")
+        st.image("https://static.streamlit.io/examples/dog.jpg")
+    
     
     # Manipulate cropped image at will
     st.write("Preview")
