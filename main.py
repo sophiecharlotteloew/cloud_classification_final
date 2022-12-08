@@ -34,9 +34,9 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 if uploaded_file is not None:
              
     # Crop the uploaded image on the page
-    st.write('#### Please select the part of the sky')
+    st.write('Please select the part of the sky')
     realtime_update = st.checkbox(label="Update in Real Time", value=True)
-    img = Image.open(uploaded_file, width=300)
+    img = Image.open(uploaded_file)
     if not realtime_update:
         st.write("Double click to save crop")
     # Get a cropped image from the frontend
@@ -77,8 +77,11 @@ if uploaded_file is not None:
                 my_bar.progress((i+1)*10)
                 time.sleep(1)
         
-            st.write('Analysis of weather performed ! ⛅')
-            st.write(f'### {res}')
+            st.write('Analysis performed!')
+            # st.write(f'### {res}')
+            st.write('### Result:')
+            result_outcome = '<p style="font-family:Courier; color:Blue; font-size: 20px;">Original image</p>'
+            st.markdown(result_outcome, unsafe_allow_html=True)
 
 if uploaded_file_2 is not None:
     
