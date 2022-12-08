@@ -91,8 +91,8 @@ if uploaded_file is not None:
             probability = " ".join(str(x) for x in prob_list)
             
             # st.write(f'### {res}')
-            result_outcome = f'<p style="color:White; font-size: 20px;"> Result: {weather}</p>'
-            probability_outcome = f'<p style="color:White; font-size: 20px;"> Probability: {probability}</p>'
+            result_outcome = f'<p style="color:White; font-size: 24px;font-weight:bold"> Result: {weather}</p>'
+            probability_outcome = f'<p style="color:White; font-size: 24px; font-weight:bold"> Probability: {probability}</p>'
             st.markdown(result_outcome, unsafe_allow_html=True)
             st.markdown(probability_outcome, unsafe_allow_html=True)
 
