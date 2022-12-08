@@ -81,13 +81,13 @@ if uploaded_file is not None:
             
             # Getting the weather
             weather_list = res.split()
-            weather_list = weather_list[5:]
+            weather_list = weather_list[6:]
             del weather_list[-8:]
             weather = " ".join(str(x) for x in weather_list)
             
             # Getting the probability
             prob_list = res.split()
-            del prob_list[-2:]
+            del prob_list[:-2]
             probability = " ".join(str(x) for x in prob_list)
             
             # st.write(f'### {res}')
