@@ -86,7 +86,7 @@ if uploaded_file is not None:
             weather = " ".join(str(x) for x in result_list)
             
             # st.write(f'### {res}')
-            result_outcome = f'<p style="font-family:Courier; color:Blue; font-size: 20px;"> Result: {res}</p>'
+            result_outcome = f'<p style="font-family:Courier; color:Blue; font-size: 20px;"> Result: {weather}</p>'
             # probability_outcome = f'<p style="font-family:Courier; color:Red; font-size: 20px;"> Result: {res}</p>'
             st.markdown(result_outcome, unsafe_allow_html=True)
             # st.markdown(probability_outcome, unsafe_allow_html=True)
