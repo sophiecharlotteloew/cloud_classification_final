@@ -65,22 +65,23 @@ if uploaded_file is not None:
         cropped_img_bytes = cropped_img.tobytes()
 
         if st.button('Analyze the weather'):
-            # Progress bar
-            st.spinner("Sending the image to the API ...")
             # Sending to API for prediction
             res = requests.post(url, files={'bytes': cropped_img_bytes})
             res = res.content
             res = res.decode("utf-8")
 
     with col2:
-
-        my_bar = st.progress(0)
-        for i in range(10):
-            my_bar.progress((i+1)*10)
-            time.sleep(1)
         
-        st.write('Analysis of weather performed ! ⛅')
-        st.write(f'### {res}')
+        if st.button('Analyze the weather'):
+        # Sending to API for prediction
+
+            my_bar = st.progress(0)
+            for i in range(10):
+                my_bar.progress((i+1)*10)
+                time.sleep(1)
+        
+            st.write('Analysis of weather performed ! ⛅')
+            st.write(f'### {res}')
 
 if uploaded_file_2 is not None:
     
