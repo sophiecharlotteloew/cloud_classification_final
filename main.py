@@ -47,38 +47,32 @@ if uploaded_file is not None:
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.header("A cat")
-        st.image("https://static.streamlit.io/examples/cat.jpg")
+        # Manipulate cropped image at will
+        st.write("Preview")
+        _ = cropped_img.thumbnail((224,224))
+        st.image(cropped_img)
+        cropped_img = cropped_img.convert(mode = "RGB")
+
+        # Add one pixel if shape is not 200
+        if cropped_img.size[0] != 224:
+            na = np.array(cropped_img)
+            x = na[0,:]
+            y = np.expand_dims(na[:,0], axis=1)
+            new_img = np.append(na, y, axis=1)
+            cropped_img = Image.fromarray(new_img)
+
+        # Convert cropped image to bytes
+        cropped_img_bytes = cropped_img.tobytes()
+
+        if st.button('Analyze the weather'):
+            # Progress bar
+            st.spinner("Sending the image to the API ...")
+            # Sending to API for prediction
+            res = requests.post(url, files={'bytes': cropped_img_bytes})
+            res = res.content
+            res = res.decode("utf-8")
 
     with col2:
-        st.header("A dog")
-        st.image("https://static.streamlit.io/examples/dog.jpg")
-    
-    
-    # Manipulate cropped image at will
-    st.write("Preview")
-    _ = cropped_img.thumbnail((224,224))
-    st.image(cropped_img)
-    cropped_img = cropped_img.convert(mode = "RGB")
-
-    # Add one pixel if shape is not 200
-    if cropped_img.size[0] != 224:
-        na = np.array(cropped_img)
-        x = na[0,:]
-        y = np.expand_dims(na[:,0], axis=1)
-        new_img = np.append(na, y, axis=1)
-        cropped_img = Image.fromarray(new_img)
-
-    # Convert cropped image to bytes
-    cropped_img_bytes = cropped_img.tobytes()
-
-    if st.button('Analyze the weather'):
-        # Progress bar
-        st.spinner("Sending the image to the API ...")
-        # Sending to API for prediction
-        res = requests.post(url, files={'bytes': cropped_img_bytes})
-        res = res.content
-        res = res.decode("utf-8")
 
         my_bar = st.progress(0)
         for i in range(10):
