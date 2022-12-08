@@ -81,6 +81,10 @@ if uploaded_file is not None:
             result_list = res.split()
             st.write(type(result_list))
             st.write(result_list)
+            result_list = result_list[6:]
+            del result_list[-8:]
+            weather = " ".join(str(x) for x in result_list)
+            
             # st.write(f'### {res}')
             result_outcome = f'<p style="font-family:Courier; color:Blue; font-size: 20px;"> Result: {res}</p>'
             # probability_outcome = f'<p style="font-family:Courier; color:Red; font-size: 20px;"> Result: {res}</p>'
