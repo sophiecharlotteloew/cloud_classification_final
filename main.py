@@ -44,7 +44,7 @@ if uploaded_file is not None:
     
     # Switching to 2 columns: 
     
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
 
     with col1:
         # Manipulate cropped image at will
@@ -64,16 +64,13 @@ if uploaded_file is not None:
         # Convert cropped image to bytes
         cropped_img_bytes = cropped_img.tobytes()
 
+    with col2:
+        
         if st.button('Analyze the weather'):
             # Sending to API for prediction
             res = requests.post(url, files={'bytes': cropped_img_bytes})
             res = res.content
             res = res.decode("utf-8")
-
-    with col2:
-        
-        if st.button('Analyze the weather'):
-        # Sending to API for prediction
 
             my_bar = st.progress(0)
             for i in range(10):
