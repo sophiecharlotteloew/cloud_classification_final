@@ -78,6 +78,7 @@ if uploaded_file is not None:
                 time.sleep(1)
         
             st.write('Analysis performed!')
+            st.write(type(res)
             # st.write(f'### {res}')
             result_outcome = f'<p style="font-family:Courier; color:Blue; font-size: 20px;"> Result: {res}</p>'
             # probability_outcome = f'<p style="font-family:Courier; color:Red; font-size: 20px;"> Result: {res}</p>'
