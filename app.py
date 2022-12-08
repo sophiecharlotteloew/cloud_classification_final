@@ -47,8 +47,8 @@ async def predict(bytes: bytes=File(...)):
         print("Weather : ", weather)
         print("probability = ",prob)
 
-    # result = f"This part of the image shows {weather}. The model has calculated a probability of {prob}."
-    result = [weather,prob]
+    result = f"This part of the image shows {weather}. The model has calculated a probability of {prob}."
+    #result = [weather,prob]
     return result
 
 
