@@ -79,9 +79,10 @@ if uploaded_file is not None:
         
             st.write('Analysis performed!')
             # st.write(f'### {res}')
-            st.write('### Result:')
-            result_outcome = f'<p style="font-family:Courier; color:Blue; font-size: 20px;"> Result: {res}</p>'
+            result_outcome = f'<p style="font-family:Courier; color:Red; font-size: 20px;"> Result: {res}</p>'
+            probability_outcome = f'<p style="font-family:Courier; color:Red; font-size: 20px;"> Result: {res}</p>'
             st.markdown(result_outcome, unsafe_allow_html=True)
+            st.markdown(probability_outcome, unsafe_allow_html=True)
 
 if uploaded_file_2 is not None:
     
