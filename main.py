@@ -47,11 +47,11 @@ with col1:
 with col2:
     if uploaded_file is not None:
         
-    # Manipulate cropped image at will
-    st.write("Preview")
-    _ = cropped_img.thumbnail((224,224))
-    st.image(cropped_img)
-    cropped_img = cropped_img.convert(mode = "RGB")
+        # Manipulate cropped image at will
+        st.write("Preview")
+        _ = cropped_img.thumbnail((224,224))
+        st.image(cropped_img)
+        cropped_img = cropped_img.convert(mode = "RGB")
         
     
     
