@@ -79,8 +79,6 @@ if uploaded_file is not None:
         
             st.write('Analysis performed!')
             result_list = res.split()
-            st.write(type(result_list))
-            st.write(result_list)
             result_list = result_list[6:]
             del result_list[-8:]
             weather = " ".join(str(x) for x in result_list)
