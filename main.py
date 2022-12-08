@@ -28,36 +28,6 @@ st.sidebar.markdown(f"""# Please upload a photo of the sky or take a photo direc
 uploaded_file = st.sidebar.file_uploader("Upload a JPG file", type="jpg")
 uploaded_file_2 = st.sidebar.camera_input("Take a picture")
 
-col1, col2 = st.columns(2)
-
-with col1:
-   
-    if uploaded_file is not None:
-             
-        # Crop the uploaded image on the page
-        st.write('#### Please select the part of the sky')
-        realtime_update = st.checkbox(label="Update in Real Time", value=True)
-        img = Image.open(uploaded_file)
-        if not realtime_update:
-            st.write("Double click to save crop")
-        # Get a cropped image from the frontend
-        cropped_img = st_cropper(img, realtime_update=realtime_update, box_color="blue",
-                                aspect_ratio=(1, 1))
-
-with col2:
-    if uploaded_file is not None:
-        
-        # Manipulate cropped image at will
-        st.write("Preview")
-        _ = cropped_img.thumbnail((224,224))
-        st.image(cropped_img)
-        cropped_img = cropped_img.convert(mode = "RGB")
-        
-    
-    
-
- 
-
 st.write("### Let's analyze the Sky!")
 st.set_option('deprecation.showfileUploaderEncoding', False)
 
