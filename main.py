@@ -36,7 +36,7 @@ if uploaded_file is not None:
     # Crop the uploaded image on the page
     st.write('#### Please select the part of the sky')
     realtime_update = st.checkbox(label="Update in Real Time", value=True)
-    img = Image.open(uploaded_file)
+    img = Image.open(uploaded_file, width=300)
     if not realtime_update:
         st.write("Double click to save crop")
     # Get a cropped image from the frontend
@@ -118,5 +118,5 @@ if uploaded_file_2 is not None:
         st.write('Analysis of weather performed ! ⛅')
         st.write(f'### {res}')
 
-if st.button('Or do you wish for snow?'):
-    st.snow()
+#if st.button('Or do you wish for snow?'):
+#    st.snow()
