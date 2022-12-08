@@ -78,16 +78,23 @@ if uploaded_file is not None:
                 time.sleep(1)
         
             st.write('Analysis performed!')
-            result_list = res.split()
-            result_list = result_list[6:]
-            del result_list[-8:]
-            weather = " ".join(str(x) for x in result_list)
+            
+            # Getting the weather
+            weather_list = res.split()
+            weather_list = weather_list[5:]
+            del weather_list[-8:]
+            weather = " ".join(str(x) for x in weather_list)
+            
+            # Getting the probability
+            prob_list = res.split()
+            del prob_list[-2:]
+            probability = " ".join(str(x) for x in prob_list)
             
             # st.write(f'### {res}')
             result_outcome = f'<p style="font-family:Courier; color:Blue; font-size: 20px;"> Result: {weather}</p>'
-            # probability_outcome = f'<p style="font-family:Courier; color:Red; font-size: 20px;"> Result: {res}</p>'
+            probability_outcome = f'<p style="font-family:Courier; color:Red; font-size: 20px;"> Result: {probability}</p>'
             st.markdown(result_outcome, unsafe_allow_html=True)
-            # st.markdown(probability_outcome, unsafe_allow_html=True)
+            st.markdown(probability_outcome, unsafe_allow_html=True)
 
 if uploaded_file_2 is not None:
     
