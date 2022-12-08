@@ -34,14 +34,14 @@ with col1:
    
     if uploaded_file is not None:
              
-    # Crop the uploaded image on the page
-    st.write('#### Please select the part of the sky')
-    realtime_update = st.checkbox(label="Update in Real Time", value=True)
-    img = Image.open(uploaded_file)
-    if not realtime_update:
-        st.write("Double click to save crop")
-    # Get a cropped image from the frontend
-    cropped_img = st_cropper(img, realtime_update=realtime_update, box_color="blue",
+        # Crop the uploaded image on the page
+        st.write('#### Please select the part of the sky')
+        realtime_update = st.checkbox(label="Update in Real Time", value=True)
+        img = Image.open(uploaded_file)
+        if not realtime_update:
+            st.write("Double click to save crop")
+        # Get a cropped image from the frontend
+        cropped_img = st_cropper(img, realtime_update=realtime_update, box_color="blue",
                                 aspect_ratio=(1, 1))
 
 with col2:
