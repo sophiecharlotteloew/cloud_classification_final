@@ -78,7 +78,7 @@ if uploaded_file is not None:
                 time.sleep(1)
         
             st.write('Analysis performed!')
-            result_string = res.split(' ', 6)[1]
+            result_string = res.split(' ', 1)[4:7]
             st.write(type(result_string))
             st.write(result_string)
             # st.write(f'### {res}')
